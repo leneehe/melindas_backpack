@@ -11,15 +11,21 @@ class Backpack
 
   def prepare
     # set up local variables used by rest of prepare method
-    weather_condition = @attributes[:weather]
-    day_of_week = @attributes[:day_of_week]
+    @weather_condition = @attributes[:weather]
+    @day_of_week = @attributes[:day_of_week]
 
+    prepare_for_weather
+    prepare_for_gym_day
+    prepare_the_food
+  end
+
+  def prepare_for_weather
     # Ensure appropriate clothing is added to backpack
-    if weather_condition == 'rainy'
+    if @weather_condition == 'rainy'
       @items << 'pants'
       @items << 'shirt'
       @items << 'umbrella'
-    elsif weather_condition == 'cold'
+    elsif @weather_condition == 'cold'
       @items << 'pants'
       @items << 'shirt'
       @items << 'jacket'
@@ -27,21 +33,27 @@ class Backpack
       @items << 'pants'
       @items << 'shirt'
     end
+  end
 
+  def prepare_for_gym_day
     # Ensure gym shoes are added to backpack if it's a gym day
     # Gotta get to the gym on Mondays and Thursdays.
-    if day_of_week == 'monday' || day_of_week == 'thursday'
+    if @day_of_week == 'monday' || @day_of_week == 'thursday'
       @items << 'gym shoes'
     end
+  end
 
+  def prepare_the_food
     # Bring a packed lunch on all weekdays
-    if day_of_week != 'saturday' && day_of_week != 'sunday'
+    if @day_of_week != 'saturday' && @day_of_week != 'sunday'
       @items << 'packed lunch'
     elsif false
       # Used to bring snacks on weekend trips, but now I just buy 'em
       @items << 'snacks'
     end
   end
+
+
 
   # Prints a summary packing list for Melinda's backpack
   def backpack_list
