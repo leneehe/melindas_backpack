@@ -10,7 +10,6 @@ class Backpack
   end
 
   def prepare
-    # set up local variables used by rest of prepare method
     @weather_condition = @attributes[:weather]
     @day_of_week = @attributes[:day_of_week]
 
@@ -36,8 +35,7 @@ class Backpack
   end
 
   def prepare_for_gym_day
-    # Ensure gym shoes are added to backpack if it's a gym day
-    # Gotta get to the gym on Mondays and Thursdays.
+    # Ensure gym shoes are added to backpack if it's a gym day-Mondays and Thursdays.
     if @day_of_week == 'monday' || @day_of_week == 'thursday'
       @items << 'gym shoes'
     end
@@ -49,8 +47,6 @@ class Backpack
       @items << 'packed lunch'
     end
   end
-
-
 
   # Prints a summary packing list for Melinda's backpack
   def backpack_list
